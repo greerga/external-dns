@@ -57,12 +57,6 @@ func TestGetTTLFromAnnotations(t *testing.T) {
 			expectedErr: fmt.Errorf("TTL value must be between [%d, %d]", ttlMinimum, ttlMaximum),
 		},
 		{
-			title:       "TTL annotation value is too high",
-			annotations: map[string]string{ttlAnnotationKey: fmt.Sprintf("%d", 1<<32)},
-			expectedTTL: endpoint.TTL(0),
-			expectedErr: fmt.Errorf("TTL value must be between [%d, %d]", ttlMinimum, ttlMaximum),
-		},
-		{
 			title:       "TTL annotation value is set correctly using integer",
 			annotations: map[string]string{ttlAnnotationKey: "60"},
 			expectedTTL: endpoint.TTL(60),
